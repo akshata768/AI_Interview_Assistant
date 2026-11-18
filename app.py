@@ -10,4 +10,4 @@ except (keyError, FileNotFoundError):
   st.stop()
 role = st.selectbox('Job Title', ['Machine Learning Engineer', 'Senior Software Engineer', 'Devops Engineer', 'other'])
 if role == "other
-st.text_input("Enter you Job Title", "XXXXXXX")
+st.text_input('Enter you Job Title', 'XXXXXXX')
