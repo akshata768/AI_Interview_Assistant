@@ -34,7 +34,7 @@ if st.button("Generate AI Responace", type ="primary"):
     task = "Generate " + str(count) + " Frequently asked Interview Question on the  topic" + topic + " and given hints to slove them."
   elif mode == "Evalute Answer":
     task =  "Question : " + question + " My Answer : " + answer + "Evalute this answer."
-   elif mode == "Improve Answer":
+  elif mode == "Improve Answer":
      task = "Question : " + question + " My Answer : " + answer + "Improve this answer."
      bankground = "Job role : " +role+ " Difficulty level "+level
      with st.spinner("Generating your answer ... "):
