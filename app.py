@@ -30,7 +30,7 @@ if st.button("Generate AI Responace", type ="primary"):
   if mode == "Generate Question":
     task = "Generate " + str(count) + " Frequently asked Interview Question, 2 senariow."
   elif mode == "Generate Code Question":
-    task = "Generate " + str(count) + " Frequently asked Interview Question on the  topic" + topic + " and given hints to slove them."
+    task = "Generate " + str(count) + " Frequently asked Interview Question on the  topic" + topic + "and given hints to slove them."
   elif mode == "Evalute Answer":
     task =  "Question : " + question + " My Answer : " + answer + "Evalute this answer."
   elif mode == "Improve Answer":
@@ -53,7 +53,7 @@ if st.button("Generate AI Responace", type ="primary"):
       st.markdown(output)
       st.download_button("Download Response", output , file_name = "Interview_Response.txt", mime = 'text/plain')
     except Exception as e:
-      st.error("API connection was unsuccessful",{e})
+      st.error("API connection was unsuccessful",e)
       st.info("please check your API key and rate limits")
 st.caption("Powered by Streamlit.io and Github. using llm api")
     
