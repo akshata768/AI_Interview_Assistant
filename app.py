@@ -52,7 +52,7 @@ if st.button("Generate AI Responace", type ="primary"):
          st.subheader("AI Response ")
          st.markdown(output)
          st.download_button("Download Response", output , file_name = "Interview_Response.txt", mime = 'text/plain')
-        except Exception as e:
+       except Exception as e:
              st.error ("API connection was unsuccessful", e)
              st.info ("please check your API key and rate limits")
  st.caption("Powered by Streamlit.io and Github. using llm api")
