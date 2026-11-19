@@ -27,7 +27,6 @@ if st.button("Generate AI Responace", type ="primary"):
   if mode in ['Evaluate Answer', 'Improve Answer'] and (not question.strip() or not answer.strip()):
     st.warning("please enter a valid Question and Answer")
     st.stop() 
-  topics = "Topic is " + topic + "Difficulty is " + level
   if mode == "Generate Question":
     task = "Generate " + str(count) + " Frequently asked Interview Question, 2 senariow."
   elif mode == "Generate Code Question":
@@ -36,7 +35,7 @@ if st.button("Generate AI Responace", type ="primary"):
     task =  "Question : " + question + " My Answer : " + answer + "Evalute this answer."
   elif mode == "Improve Answer":
      task = "Question : " + question + " My Answer : " + answer + "Improve this answer."
-     bankground = "Job role : " +role+ " Difficulty level "+level
+  background = "Job role : " +role+ " Difficulty level "+level
      with st.spinner("Generating your answer ... "):
        try:
          reponse = client.chat.completions.create(
