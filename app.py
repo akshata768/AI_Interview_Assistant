@@ -36,7 +36,7 @@ if st.button("Generate AI Responace", type ="primary"):
   elif mode == "Improve Answer":
      task = "Question : " + question + " My Answer : " + answer + "Improve this answer."
   background = "Job role : " +role+ " Difficulty level "+level
-     with st.spinner("Generating your answer ... "):
+  with st.spinner("Generating your answer ... "):
        try:
          reponse = client.chat.completions.create(
            model = gen_model,
