@@ -42,7 +42,7 @@ if st.button("Generate AI Responace", type ="primary"):
          reponse = client.chat.completions.create(
            model = ren_model,
            messages = [{"role":"sytem",
-                        "content":"Act as a Senior Interviwer, both HR and Technical exper"}
+                        "content":"Act as a Senior Interviwer, both HR and Technical exper"},
                         {"role": "user",
                         "content" : background + task }],
            temprature = 0.7,
