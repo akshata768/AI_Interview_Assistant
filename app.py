@@ -37,24 +37,24 @@ if st.button("Generate AI Responace", type ="primary"):
     task = "Question : " + question + " My Answer : " + answer + "Improve this answer."
   background = "Job role : " +role+ " Difficulty level "+level
   with st.spinner("Generating your answer ... "):
-       try:
-         reponse = client.chat.completions.create(
-           model = gen_model,
-           messages = [{"role":"sytem",
-                        "content":"Act as a Senior Interviwer, both HR and Technical exper"},
-                        {"role": "user",
-                        "content" : background + task }
+    try:
+      response = client.chat.completions.create(
+        model = gen_model,
+        messages = [{"role":"sytem",
+                     "content":"Act as a Senior Interviwer, both HR and Technical exper"},
+                    {"role": "user",
+                     "content" : background + task }
                       ],
-           temprature = 0.7,
-           max_tokens = 1800 
-         )
-         output = reponse.choices[0].message.content
-         st.subheader("AI Response ")
-         st.markdown(output)
-         st.download_button("Download Response", output , file_name = "Interview_Response.txt", mime = 'text/plain')
-       except Exception as e:
-         st.error ("API connection was unsuccessful", e)
-         st.info ("please check your API key and rate limits")
+        temprature = 0.7,
+        max_tokens = 1800 
+      )
+      output = response.choices[0].message.content
+      st.subheader("AI Response ")
+      st.markdown(output)
+      st.download_button("Download Response", output , file_name = "Interview_Response.txt", mime = 'text/plain')
+    except Exception as e:
+      st.error ("API connection was unsuccessful", e)
+      st.info ("please check your API key and rate limits")
   st.caption("Powered by Streamlit.io and Github. using llm api")
     
   
