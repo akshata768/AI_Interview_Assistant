@@ -12,7 +12,7 @@ except (keyError, FileNotFoundError):
 role = st.selectbox('Job Title', ['Machine Learning Engineer', 'Senior Software Engineer', 'Devops Engineer', 'other'])
 if role == "other":
   st.text_input('Enter you Job Title', 'XXXXXXX')
-model = st.selectbox('Model', ['openai/gpt-oss-20b','openai/gpt-oss-120b'])
+gen_model = st.selectbox('Model', ['openai/gpt-oss-20b','openai/gpt-oss-120b'])
 level = st.selectbox('Difficulty', ['Beginer', 'Intermediate', 'Advance'])
 mode = st.radio('Activity', ['Generate Question', 'Generate Code Question', 'Evalute Answer', 'Improve Answer']) 
 if mode == 'Generate Question':
@@ -40,14 +40,14 @@ if st.button("Generate AI Responace", type ="primary"):
      with st.spinner("Generating your answer ... "):
        try:
          reponse = client.chat.completions.create(
-           model = ren_model,
+           model = gen_model,
            messages = [{"role":"sytem",
                         "content":"Act as a Senior Interviwer, both HR and Technical exper"},
                         {"role": "user",
                         "content" : background + task }],
            temprature = 0.7,
            max_tokens = 1800 )
-          output = reponse.choices[0].message.content
+           output = reponse.choices[0].message.content
          st.subheader("AI Response ")
          st.markdown(output)
          st.download_button("Download Response", output , file_name = "Interview_Response.txt", mime = 'text/plain')
