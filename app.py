@@ -23,8 +23,39 @@ elif mode == 'Generate code Quention':
 else:
   question = st.text_area('Enter Interview Question here')
   answer = st.text_area('Enter your answer', height = 160)
-if st.button("generate ai responace", type = "primary"):
+if st.button("Generate AI Responace", type ="primary"):
   if mode in (['Evaluate Answer', 'Improve Answer'] and (not question.strip()) or (not answer.strip()):
     st.warning("please enter a valid Question and Answer")
-    st.stop()         
+    st.stop() 
+  topics = "Topic is " + topic + "Difficulty is " + level
+  if mode == "Generate Question":
+    task = "Generate " + str(count) + " Frequently asked Interview Question, 2 senariow."
+  elif mode == "Generate Code Question":
+    task = "Generate " + str(count) + " Frequently asked Interview Question on the  topic" + topic + " and given hints to slove them.
+  elif mode == "Evalute Answer":
+    task =  "Question : " + question + " My Answer : " + answer + "Evalute this answer."
+   elif mode == "Improve Answer":
+     task = "Question : " + question + " My Answer : " + answer + "Improve this answer."
+     bankground = Job role : " +role+ " Difficulty level "+level
+     with st.spinner("Generating your answer ... "):
+       try:
+         reponse = client.chat.completions.create(
+           model = ren_model,
+           messages = [{"role":"sytem",
+                        "content":"Act as a Senior Interviwer, both HR and Technical exper"}
+                        {"role": "user",
+                        "content" : background + task }],
+           temprature = 0.7,
+           max_tokens = 1800 )
+           output = reponse..choices[0].message.content
+         st.subheader("AI Response ")
+         st.markdown(output)
+         st.download_button("Download Response", output , file_name = "Interview_Response.txt", mime = 'text/plain')
+         )
+           except E xception as e:
+             st.error ("API connection was unsuccessful", e)
+             st.info ("please check your API key and rate limits")
+ st.caption("Powered by Streamlit.io and Github. using llm api")
+    
+  
   
